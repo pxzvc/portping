@@ -37,7 +37,7 @@ def ping_port(host, port):
     """Attempts to connect to the specified host and port."""
     try:
         start_time = time.time()  # Record the start time
-        with socket.create_connection((host, port)) as sock:
+        with socket.create_connection((host, port), timeout=1) as sock:  # Set timeout to 1 second
             end_time = time.time()  # Record the end time
             elapsed_time = (end_time - start_time) * 1000  # Convert to milliseconds
             print(f"{Fore.GREEN}Connected{Style.RESET_ALL} to {host} on port {port} in {elapsed_time:.2f}ms")
